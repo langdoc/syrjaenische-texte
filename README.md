@@ -29,8 +29,8 @@ The model naming pattern is sequential, so the first number after name is how ma
 ![](demo/st3_p48_27.png)
 
     ocropus-nlbin demo/st3_p48_27.png -o demo
-    ocropus-gpageseg 'demo/st3_p48_27.bin.png'
-    ocropus-rpred -Q 4 -m st2cyr-01-ae30119.pyrnn.gz 'demo/*/*.bin.png'
+    ocropus-gpageseg --scale 30 'demo/*.bin.png'
+    ocropus-rpred -Q 4 -m st2cyr-01-ae30119-00006000.pyrnn.gz 'demo/*/*.bin.png'
     ocropus-hocr 'demo/st3_p48_27.bin.png' -o demo.html
 
 ## References
