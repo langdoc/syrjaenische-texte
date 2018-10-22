@@ -16,6 +16,22 @@ Since the work is very much done from the modern language documentation point of
     ocropus-nlbin raw/*.png -o train
     ocropus-gpageseg --scale 30 'train/*.bin.png'
     ocropus-gtedit html train/*/*.png -o temp-correction.html
+    ocropus-gtedit extract temp-correction.html
+
+The models have been trained with following command:
+
+    ocropus-rtrain -c ./train/*/*gt.txt -o st2cyr-01-ae30119 -d 20 ./train/*/*png
+
+The model naming pattern is sequential, so the first number after name is how manieth model this is, and that is followed by the commit number of this repository containing the training files in the state used in model training. Better ideas to arrange this are very welcome, however, ensuring that it is known exactly with what data the model is trained is very important and must be devoted attention. 
+
+## Demo
+
+![](demo/st3_p48_27.png)
+
+    ocropus-nlbin demo/st3_p48_27.png -o demo
+    ocropus-gpageseg 'demo/st3_p48_27.bin.png'
+    ocropus-rpred -Q 4 -m st2cyr-01-ae30119.pyrnn.gz 'demo/*/*.bin.png'
+    ocropus-hocr 'demo/st3_p48_27.bin.png' -o demo.html
 
 ## References
 
