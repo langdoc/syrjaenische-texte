@@ -8,6 +8,15 @@ This project, work of which is done within Kone Foundation funded project IKDP-2
 
 Since the work is very much done from the modern language documentation point of view, one goal is to provide pipelines that transform the recognized text into an ELAN file, so that there is easy and full searchability with the other comparable resources. However, multiple outputs are very much needed, and one of these should be an HTML file that somehow displays the content in attractive and easily browsed format.
 
+## Reproducibility
+
+    wget https://www.sgr.fi/sust/st/st3.pdf
+    mkdir raw
+    Rscript extract_pages.R
+    ocropus-nlbin raw/*.png -o train
+    ocropus-gpageseg --scale 30 'train/*.bin.png'
+    ocropus-gtedit html train/*/*.png -o temp-correction.html
+
 ## References
 
 **TODO:** IKDP project has to be mentioned here, and also there could be BibTex for each Syrjänische Texte book.
